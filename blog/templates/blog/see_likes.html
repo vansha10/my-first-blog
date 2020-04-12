@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+       {% for user in likers.all %}
+            <div>
+                {{user.username}}
+            </div>
+        {% empty %}
+            <p>No likes here yet :(</p>
+       {% endfor %}
+{% endblock %}

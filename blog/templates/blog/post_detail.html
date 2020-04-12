@@ -16,6 +16,17 @@
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
+    <div class='likes_panel'>
+        <div class='likes'>
+            {{post.likes}}
+        </div>
+        <a class="btn btn-default" href="{% url 'add_like_to_post' pk=post.pk %}"><span class="	glyphicon glyphicon-thumbs-up"></a>
+        <a class="btn btn-default" href="{% url 'see_likes' pk=post.pk %}">See likes</a>
+        <div class="dislikes">
+            {{post.dislikes}}
+        </div>
+        <a class="btn btn-default" href="{% url 'add_dislike_to_post' pk=post.pk %}"><span class="	glyphicon glyphicon-thumbs-down"></a>
+    </div>
     <hr>
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
     {% for comment in post.comments.all %}

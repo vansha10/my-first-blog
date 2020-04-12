@@ -83,3 +83,17 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+def add_like(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.add_like(request)
+    return redirect('post_detail', pk=pk)
+
+def add_dislike(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.add_dislike(request)
+    return redirect('post_detail', pk=pk)
+
+def see_likes(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/see_likes.html', {'likers': post.likers})
